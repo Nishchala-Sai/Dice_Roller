@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+/* ── Variables ── */
+:root {
+  --pink-bg:   #f9c8c8;
+  --cream:     #fdf5e8;
+  --coral:     #f07050;
+  --coral-hover: #e05a3a;
+  --outline:   #e8b090;
+  --text-dark: #3a2a22;
+  --text-mid:  #7a5a4a;
+  --shadow:    rgba(200, 120, 80, 0.18);
+}
+
+/* ── Reset / Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--pink-bg);
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem 3rem;
+}
+
+/* ── Card ── */
+.card {
+  background: var(--cream);
+  border-radius: 28px;
+  padding: 3rem 3.5rem 2.5rem;
+  box-shadow: 0 12px 40px var(--shadow);
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  animation: floatIn 0.6s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(28px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)   scale(1);    }
+}
+
+/* ── Heading ── */
+h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 1.6rem;
+  letter-spacing: -0.5px;
+}
+
+/* ── Label ── */
+label[for="numDice"] {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-mid);
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+/* ── Input ── */
+input#numDice {
+  width: 200px;
+  height: 50px;
+  padding: 0.75rem 1rem;
+  border: 2.5px solid var(--outline);
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  background: #fff;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  margin-bottom: 1.1rem;
+}
+
+input#numDice:focus {
+  border-color: var(--coral);
+  box-shadow: 0 0 0 4px rgba(240, 112, 80, 0.15);
+}
+
+/* ── Roll Button ── */
+button#rollButton {
+  width: 100px;
+  padding: 0.85rem 1.5rem;
+  background: var(--coral);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 6px 18px rgba(240, 112, 80, 0.35);
+}
+
+button#rollButton:hover {
+  background: var(--coral-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(224, 90, 58, 0.35);
+}
+
+button#rollButton:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 10px rgba(240, 112, 80, 0.25);
+}
+
+/* ── Result ── */
+#result {
+  margin-top: 1.5rem;
+  min-height: 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+#result:not(:empty) {
+  background: #fff;
+  border: 2px dashed var(--outline);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+  animation: popIn 0.3s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+/* ── Paw-print decoration (pure CSS) ── */
+body::before {
+  content: '🐾';
+  position: fixed;
+  top: 1.2rem;
+  left: 1.8rem;
+  font-size: 1.6rem;
+  opacity: 0.35;
+  pointer-events: none;
+}
+body::after {
+  content: '🐾';
+  position: fixed;
+  bottom: 1.2rem;
+  right: 1.8rem;
+  font-size: 1.6rem;
+  opacity: 0.35;
+  pointer-events: none;
+  transform: rotate(180deg);
+}
